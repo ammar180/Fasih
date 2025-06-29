@@ -1,1 +1,1 @@
-![Fasih image](/Docs/assets/فصيح.png)
+![Fasih image](/Docs/assets/fasih-favo.png)

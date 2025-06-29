@@ -23,20 +23,24 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
+        working-directory: FrontEnd
 
       - name: Clean previous builds
         run: flutter clean
+        working-directory: FrontEnd
 
       - name: Build APK
         run: flutter build apk --release
+        working-directory: FrontEnd
 
       - name: Rename APK to <reponame>.apk
         run: |
           mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/${{ github.event.repository.name }}.apk
+        working-directory: FrontEnd
 
       - name: Upload APK to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/app/outputs/flutter-apk/${{ github.event.repository.name }}.apk
+          files: FrontEnd/build/app/outputs/flutter-apk/${{ github.event.repository.name }}.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
